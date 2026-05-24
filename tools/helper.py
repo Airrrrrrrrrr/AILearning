@@ -1,6 +1,6 @@
 import sys
 
-def stream_print(chunks):
+def stream_print_with_reasoning(chunks):
     # ANSI 颜色码
     GRAY = "\033[90m"
     RESET = "\033[0m"
@@ -19,6 +19,14 @@ def stream_print(chunks):
                 sys.stdout.write(f"\n\n{GRAY}── 回答 ──{RESET}\n")
                 sys.stdout.flush()
                 had_reasoning = False
+            sys.stdout.write(content)
+            sys.stdout.flush()
+    print()
+
+def stream_print(chunks):
+    for chunk in chunks:
+        content = chunk.content or ""
+        if content:
             sys.stdout.write(content)
             sys.stdout.flush()
     print()

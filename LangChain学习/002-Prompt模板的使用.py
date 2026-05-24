@@ -17,4 +17,4 @@ print("填充后的prompt：", prompt_template_text)
 chunks = model.stream(prompt_template_text)
 
 # 带思考过程的打印
-stream_print(chunks)
+stream_print_with_reasoning(chunks)

@@ -64,11 +64,11 @@ if chatPromptA != chatPromptB:
 
 
 
-stream_print(model.stream(chatPromptA_result))
+stream_print_with_reasoning(model.stream(chatPromptA_result))
 print("=" * 60)
 print("\n" * 3)
-stream_print(model.stream(chatPromptB_result))
+stream_print_with_reasoning(model.stream(chatPromptB_result))
 print("=" * 60)
 print("\n" * 3)
-stream_print(model.stream(chatPromptC_result))
+stream_print_with_reasoning(model.stream(chatPromptC_result))
 
