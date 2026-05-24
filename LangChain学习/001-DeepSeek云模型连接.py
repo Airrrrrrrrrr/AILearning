@@ -6,4 +6,4 @@ model = ChatDeepSeek(**DeepSeek_model_config)
 
 chunks = model.stream("你是谁？我是谁？")
 
-stream_print(chunks)
+stream_print_with_reasoning(chunks)

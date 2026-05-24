@@ -36,4 +36,4 @@ print(chat_prompt_result.invoke({"word": "震惊"}).text)
 print("=" * 50)
 
 # 5. 发送给模型，获取并流式输出回答
-stream_print(model.stream(chat_prompt_result.invoke({"word": "震惊"})))
+stream_print_with_reasoning(model.stream(chat_prompt_result.invoke({"word": "震惊"})))
