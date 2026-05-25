@@ -1,7 +1,7 @@
 import sys
 from langchain_deepseek import ChatDeepSeek
 from tools.model_config import DeepSeek_model_config
-from tools.helper import stream_print
+from tools.helper import stream_print_with_reasoning
 from langchain_core.prompts import FewShotPromptTemplate, PromptTemplate
 
 sys.stdout.reconfigure(encoding="utf-8")
