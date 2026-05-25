@@ -3,7 +3,7 @@ from typing import List
 from langchain_core.prompt_values import ChatPromptValue
 from langchain_deepseek import ChatDeepSeek
 from tools.model_config import DeepSeek_model_config
-from tools.helper import stream_print
+from tools.helper import stream_print_with_reasoning
 from langchain_core.messages import AIMessage, HumanMessage, SystemMessage
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder, AIMessagePromptTemplate
 
