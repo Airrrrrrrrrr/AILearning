@@ -1,0 +1,9 @@
+[project]
+name = "ailearning"
+version = "0.1.0"
+description = "个人 AI 学习项目 - LangChain + DeepSeek"
+requires-python = ">=3.12"
+dependencies = [
+    "langchain-deepseek",
+    "langchain-core",
+]
