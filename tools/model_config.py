@@ -5,4 +5,5 @@ DeepSeek_model_config = {
     "base_url": "https://api.deepseek.com",
     "streaming": True,
     "api_key": os.environ.get("DEEPSEEK_API_KEY"),
+    "reasoning_effort": "low"
 }
