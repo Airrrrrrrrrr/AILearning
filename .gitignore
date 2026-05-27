@@ -10,3 +10,6 @@ __pycache__/
 
 # 环境变量文件（防止 API Key 泄露）
 .env
+
+# 聊天历史记录
+LangChain学习/chat_histories/
