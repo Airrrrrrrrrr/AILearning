@@ -15,8 +15,8 @@
 - [x] 国产模型API / API参数配置 | ⏰ — | 📊 ⭐⭐ | model_config.py 已完成DeepSeek配置
 - [ ] ⏭️ 错误处理（API层） | ⏰ — | 📊 ⭐⭐ | 当前聚焦核心功能
 - [x] Python语法 / 常用库 | ⏰ — | 📊 ⭐⭐ | 整个项目使用Python 3.12
-- [ ] 异步编程 | ⏰ 1.5h | 📊 ⭐⭐⭐ | 阶段二中结合流式输出一起学 async/await
-- [ ] 🔄 阶段一复习 | ⏰ 1h | 📊 — | 快速回顾已学内容，建立完整认知框架
+- [x] 异步编程 | ⏰ 1.5h | 📊 ⭐⭐⭐ | 阶段二中结合流式输出一起学 async/await 2026年5月30日 16点30分
+- [x] 🔄 阶段一复习 | ⏰ 1h | 📊 — | 快速回顾已学内容，建立完整认知框架
 
 > 💡 学习心得
 >
@@ -33,10 +33,10 @@
 - [x] Few-shot Prompts / Prompt组合 | ⏰ — | 📊 ⭐⭐⭐ | 003(MessagesPlaceholder)、004文件
 - [x] OutputParser / JSON解析 | ⏰ — | 📊 ⭐⭐⭐ | 005文件 StrOutputParser, JsonOutputParser
 - [x] 自定义Chain / RunnableLambda | ⏰ — | 📊 ⭐⭐⭐ | 005管道符、006 RunnableLambda/Passthrough
-- [ ] StructuredOutputParser / Pydantic解析器 | ⏰ 2.5h | 📊 ⭐⭐ | 生产环境刚需，RAG和Agent都依赖结构化输出
-- [ ] Stream与异步编程结合 | ⏰ 1.5h | 📊 ⭐⭐⭐ | 已有流式基础，补上 astream_events 支持并发
+- [x] StructuredOutputParser / Pydantic解析器 | ⏰ 2.5h | 📊 ⭐⭐ | 生产环境刚需，RAG和Agent都依赖结构化输出
+- [x] Stream与异步编程结合 | ⏰ 1.5h | 📊 ⭐⭐⭐ | 已有流式基础，补上 astream_events 支持并发 2026年5月30日 16点30分
 - [ ] ⏭️ LLMChain / SequentialChain / RouterChain | ⏰ — | 📊 ⭐⭐⭐ | 新版已用管道符和LCEL替代
-- [ ] 🔄 阶段二复习 | ⏰ 1h | 📊 — | 重点巩固 Prompt/Chain/Parser，确保基础扎实
+- [x] 🔄 阶段二复习 | ⏰ 1h | 📊 — | 重点巩固 Prompt/Chain/Parser，确保基础扎实
 
 > 💡 学习心得
 >
