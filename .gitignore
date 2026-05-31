@@ -13,3 +13,15 @@ __pycache__/
 
 # 聊天历史记录
 LangChain学习/chat_histories/
+
+# 文本分词模型
+tools/embedding_model
+
+# 向量数据库
+RAG学习/chroma_langchain_db/
+
+# 个人用
+AGENTS.md
+
+# skill
+.opencode
