@@ -10,4 +10,7 @@ dependencies = [
     "langchain-community>=0.4.2",
     "sentence-transformers>=5.5.1",
     "langchain-chroma>=1.1.0",
+    "faiss-cpu>=1.14.2",
+    "rank-bm25>=0.2.2",
+    "numpy>=2.4.6",
 ]

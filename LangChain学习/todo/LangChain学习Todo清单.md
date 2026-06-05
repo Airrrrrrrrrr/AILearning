@@ -20,7 +20,7 @@
 
 > 💡 学习心得
 >
-> （完成本阶段后填写）
+> *大模型基础层：* LLM本质是统计语言模型，通过概率预测Token。Prompt Engineering是从零样本→少样本→思维链的递进，本质是引导模型沿着合理概率空间输出。DeepSeek API通过OpenAI兼容接口调用，`model_config.py`统一管理参数。异步编程的关键在于理解"协程不是线程"——`await`释放事件循环，让多个I/O密集任务在单线程中交替推进，`asyncio.gather()`实现真正的并发加速。
 
 ---
 
@@ -40,15 +40,17 @@
 
 > 💡 学习心得
 >
-> （完成本阶段后填写）
+> *LangChain核心层：* LCEL管道符`|`的本质是`RunnableSequence`，统一了`invoke/stream/ainvoke/astream`四套接口。Prompt体系从`PromptTemplate`→`ChatPromptTemplate`→`MessagesPlaceholder`→Few-shot逐层进阶。OutputParser从`StrOutputParser`→`JsonOutputParser`→`PydanticOutputParser`→`with_structured_output`四个层次。`with_structured_output(method="function_calling", strict=False)`是DeepSeek v4-pro的最佳实践。异步流式中`astream`用`async for`遍历，`astream_events(version="v2")`可观察链内每个环节的生命周期。使用`rich`的`Live+Columns+Panel`实现终端左右分屏实时展示并发流式输出。
+>
+> *踩坑：* ①DeepSeek thinking模式与function calling的tool_choice冲突，需`extra_body: thinking: disabled`；②`with_structured_output`默认`strict=True`报错，需显式`strict=False`；③`astream_events`的`data`不一定含`chunk`键，需`.get()`防御；④终端中文显示宽度需用`unicodedata.east_asian_width`按显示宽度换行。
 
 ---
 
 ## 阶段三：文档处理和RAG
 
-- [ ] Document Loaders（PDF/文本/网页爬取） | ⏰ 2h | 📊 ⭐⭐ | RAG入口，没有文档加载就没有后续一切
-- [ ] Text Splitters（字符/语义分割） | ⏰ 3h | 📊 ⭐⭐⭐ | 分割策略直接影响检索质量，RAG调优核心
-- [ ] Embeddings + 向量存储 Chroma | ⏰ 3h | 📊 ⭐⭐⭐ | 语义搜索基石，Chroma零配置快速上手
+- [x] Document Loaders（PDF/文本/网页爬取） | ⏰ 2h | 📊 ⭐⭐ | RAG入口，没有文档加载就没有后续一切
+- [x] Text Splitters（字符/语义分割） | ⏰ 3h | 📊 ⭐⭐⭐ | 分割策略直接影响检索质量，RAG调优核心
+- [x] Embeddings + 向量存储 Chroma | ⏰ 3h | 📊 ⭐⭐⭐ | 语义搜索基石，Chroma零配置快速上手
 - [ ] FAISS / Pinecone（大规模+云方案） | ⏰ 2h | 📊 ⭐⭐⭐ | FAISS应对大规模，Pinecone了解即可
 - [ ] Retrievers + 检索优化（MMR/多路召回/重排序） | ⏰ 3h | 📊 ⭐⭐⭐⭐ | 检索质量决定RAG天花板，面试高频考点
 - [ ] RetrievalQA / ConversationalRetrievalChain | ⏰ 3h | 📊 ⭐⭐⭐ | RAG端到端管线，阶段六实战预演
@@ -119,13 +121,13 @@
 
 | 阶段 | 新学时长 | 复习时长 | 合计 | 进度 |
 |------|----------|----------|------|------|
-| 阶段一 大模型基础 | 1.5h | 1h | 2.5h | ✅ 基本完成 + 跳过不必要项 |
-| 阶段二 核心概念 | 4h | 1h | 5h | 80% |
-| 阶段三 文档处理和RAG | 16h | 2h | 18h | 0% |
+| 阶段一 大模型基础 | 1.5h | 1h | 2.5h | ✅ 100% |
+| 阶段二 核心概念 | 4h | 1h | 5h | ✅ 100% |
+| 阶段三 文档处理和RAG | 16h | 2h | 18h | 43% |
 | 阶段四 Agent和工具调用 | 14h | 2h | 16h | 0% |
-| 阶段五 记忆管理 | 4h | 1h | 5h | 50% |
+| 阶段五 记忆管理 | 4h | 1h | 5h | 40% |
 | 阶段六 项目实战 | 18h | 2h | 20h | 0% |
 | 阶段七 求职备战 | 8h | 1h | 9h | 0% |
-| **合计** | **65.5h** | **10h** | **75.5h** | — |
+| **合计** | **65.5h** | **10h** | **75.5h** | **~25%** |
 
 > **建议学习顺序：** 阶段一复习 → 阶段二补充 → 阶段三 → 阶段五补充 → 阶段四 → 阶段六 → 阶段七
