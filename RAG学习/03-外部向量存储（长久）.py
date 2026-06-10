@@ -48,7 +48,7 @@ for doc in docs[:3]:
 # 将文档向量化
 vector_store.add_documents(documents=docs, ids=["id_{}".format(i) for i in range(1, len(docs) + 1)])
 # 删除操作
-vector_store.delete(ids=["id_{}".format(i) for i in range(5, 9)])
+# vector_store.delete(ids=["id_{}".format(i) for i in range(5, 9)])
 # 选中“科幻”类型的跟“消灭”有关系的前5个
 # filter 需根据实际情况来进行编写
 results = vector_store.similarity_search("科技", k=3, filter={"genre": {"$contains": "科幻"}})

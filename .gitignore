@@ -20,6 +20,9 @@ tools/embedding_model
 # 向量数据库
 RAG学习/chroma_langchain_db/
 
+# 下载的临时模型文件
+temp/
+
 # 个人用
 AGENTS.md
 

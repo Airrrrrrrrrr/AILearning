@@ -38,11 +38,9 @@
 # @Author  : 20962
 # @Description  :
 import os
-from langchain_core.documents import Document
 from langchain_chroma import Chroma
 from langchain_core.embeddings import Embeddings
 from sentence_transformers import SentenceTransformer
-
 
 class BGEZhEmbeddings(Embeddings):
     def __init__(self, model_path: str):
@@ -54,13 +52,12 @@ class BGEZhEmbeddings(Embeddings):
     def embed_query(self, text: str) -> list[float]:
         return self.model.encode(text, normalize_embeddings=True).tolist()
 
-
-dir_path = r"C:\Users\Asus\.cache\huggingface\hub\models--BAAI--bge-large-zh-v1.5"
-embedding = BGEZhEmbeddings(model_path=os.path.abspath(dir_path))
+MODEL_DIR = os.path.join(os.path.dirname(__file__), "..", "tools", "embedding_model", "BAAI", "bge-small-zh-v1.5")
+embedding = BGEZhEmbeddings(model_path=os.path.abspath(MODEL_DIR))
 vector_store = Chroma(
     collection_name="movies",
     embedding_function=embedding,
-    persist_directory=r"C:\Users\Asus\Desktop\个人\AILearning\RAG学习\chroma_langchain_db",
+    persist_directory=os.path.join(os.path.dirname(__file__), "chroma_langchain_db"),
 )
 
 retriever = vector_store.as_retriever(search_type="similarity", search_kwargs={"k": 3}) # 这里k的默认值是4
