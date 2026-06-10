@@ -63,9 +63,35 @@ vector_store = Chroma(
     persist_directory=r"C:\Users\Asus\Desktop\个人\AILearning\RAG学习\chroma_langchain_db",
 )
 
-retriever = vector_store.as_retriever()
+retriever = vector_store.as_retriever(search_type="similarity", search_kwargs={"k": 3}) # 这里k的默认值是4
 query = "爱情"
-results = retriever.invoke(query)
-print(type(results))
+results = retriever.invoke(query) # 链式调用
+results_ = vector_store.similarity_search(query, k=3) # 向量数据库直接调用
+
+# print(type(results))
 for i, doc in enumerate(results):
-    print(f'[{i+1}] (title={doc.metadata['title']}) {doc.page_content}]')
+    print(f'similarity [{i+1}] ({doc.metadata['title']}) {doc.page_content}]')
+
+mmr_kwargs = {
+    "k": 3, # 最终返回数量
+    "fetch_k": 10, # 召回数量
+    "lambda_mult": 0.1 # 相关性
+}
+retriever_mmr = vector_store.as_retriever(search_type="mmr",search_kwargs=mmr_kwargs)
+results_mmr = retriever_mmr.invoke(query)
+print("=" * 60)
+for i, doc in enumerate(results_mmr):
+    print(f'mmr [{i+1}] ({doc.metadata['title']}) {doc.page_content}]')
+
+scores = [0.9,0.7,0.5,0.3,0.1]
+for t in scores:
+    score_kwargs={
+        "k": 5,
+        "score_threshold": t,
+    }
+    retriever_similarity_score_threshold = vector_store.as_retriever(search_type="similarity_score_threshold",search_kwargs=score_kwargs)
+    results_score = retriever_similarity_score_threshold.invoke(query)
+    if not results_score: # 如果分数太高，会出现 No relevant docs were retrieved using the relevance score threshold 0.9（无结果的情况，在链式中这是致命的）
+        results_score = retriever.invoke(query)
+    for i, doc in enumerate(results_score):
+        print(f'score [{i + 1}] ({doc.metadata['title']}) {doc.page_content}]')
